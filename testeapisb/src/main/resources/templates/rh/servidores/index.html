@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>API TESTE</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+	
+	<div class="container my-2">
+		<a th:href="@{/rh/servidores/nova}" class="btn btn-primary btn-sm mb-3">Incluir Servidor</a>
+		<h1>Servidores</h1>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>matricula</th>
+					<th>Data de cadastro</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="servidor: ${listaServidores}">
+					<td th:text="${servidor.nome}"></td>
+					<td th:text="${servidor.matricula}"></td>
+					<td th:text="${servidor.datacad}"></td>
+					
+					<td>
+						<a th:href="@{/rh/servidores/{id}(id=${servidor.id})}" class="btn btn-primary">Alterar</a>
+						<a th:href="@{/rh/servidores/excluir/{id}(id=${servidor.id})}" class="btn btn-danger">Excluir</a>			
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
